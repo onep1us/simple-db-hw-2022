@@ -14,21 +14,34 @@ public class Tuple implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 行描述
+     */
+    private TupleDesc tupleDesc;
+    /**
+     * 字段数组
+     */
+    private Field[] fields;
+    /**
+     * 记录标识
+     */
+    private RecordId recordId;
+
+    /**
      * Create a new tuple with the specified schema (type).
      *
      * @param td the schema of this tuple. It must be a valid TupleDesc
      *           instance with at least one field.
      */
     public Tuple(TupleDesc td) {
-        // TODO: some code goes here
+        this.tupleDesc = td;
+        this.fields = new Field[this.tupleDesc.numFields()];
     }
 
     /**
      * @return The TupleDesc representing the schema of this tuple.
      */
     public TupleDesc getTupleDesc() {
-        // TODO: some code goes here
-        return null;
+        return tupleDesc;
     }
 
     /**
@@ -56,7 +69,10 @@ public class Tuple implements Serializable {
      * @param f new value for the field.
      */
     public void setField(int i, Field f) {
-        // TODO: some code goes here
+        if(i < 0 || i >= fields.length){
+            return;
+        }
+        fields[i] = f;
     }
 
     /**
@@ -64,8 +80,10 @@ public class Tuple implements Serializable {
      * @return the value of the ith field, or null if it has not been set.
      */
     public Field getField(int i) {
-        // TODO: some code goes here
-        return null;
+        if(i < 0 || i >= fields.length){
+            return null;
+        }
+        return fields[i];
     }
 
     /**

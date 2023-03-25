@@ -50,6 +50,7 @@
                 <compilerarg value="-Xlint:unchecked" />
                 <!--<compilerarg value="-Xlint:deprecation" />-->
                 <compileoptions/>
+                <compilerarg line="-encoding UTF-8 "/>
             </javac>
         </sequential>
     </macrodef>
